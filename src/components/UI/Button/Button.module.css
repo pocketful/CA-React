@@ -16,6 +16,7 @@
   color: #000;
   text-transform: uppercase;
   cursor: pointer;
+  letter-spacing: 0.8px;
 }
 
 .btn:hover {
