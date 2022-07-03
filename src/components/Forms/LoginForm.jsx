@@ -1,3 +1,4 @@
+import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
 
 function LoginForm() {
@@ -22,9 +23,7 @@ function LoginForm() {
           />
         </div>
         <div className={style.group}>
-          <button type="submit" className={style.btn}>
-            Sign In
-          </button>
+          <Button>Sign In</Button>
         </div>
       </form>
     </div>
