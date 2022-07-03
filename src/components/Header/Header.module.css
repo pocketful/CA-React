@@ -1,0 +1,30 @@
+.header {
+  background-color: #7b8080da;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1em;
+}
+
+.img {
+  max-height: 30px;
+  margin: 0.5em;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav > a {
+  padding: 0.5em;
+}
+.nav > a:hover {
+  color: #e4d7d0;
+  /* color: #fbceb5; */
+  /* color: rgb(236, 177, 37); */
+  /* text-decoration: underline; */
+}
+.nav > a:active {
+  color: rgb(235, 157, 0);
+}
