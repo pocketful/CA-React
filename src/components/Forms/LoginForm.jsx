@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
@@ -7,7 +7,7 @@ import {
   inputFeedback,
   inputFeedbackText,
 } from '../../helpers/inputFeedback/inputFeedback';
-import { AuthContext } from '../../store/authContext';
+import { useAuthCtx } from '../../store/authContext';
 
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
@@ -22,7 +22,7 @@ const initialValues = {
 function LoginForm() {
   let history = useHistory();
   const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
-  const { login } = useContext(AuthContext);
+  const { login } = useAuthCtx();
 
   const formik = useFormik({
     initialValues,
