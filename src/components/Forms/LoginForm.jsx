@@ -1,8 +1,11 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
+
+const endpoint = 'v1/auth/login';
 
 const initialValues = {
   email: '',
@@ -10,7 +13,7 @@ const initialValues = {
 };
 
 function LoginForm() {
-  const [feedbackMsg, setFeedbackMsg] = useState('');
+  const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
 
   const formik = useFormik({
     initialValues,
@@ -20,10 +23,17 @@ function LoginForm() {
     }),
     onSubmit: async (values) => {
       console.log('submitted values: ', values);
+      const result = await postFetch(endpoint, values);
+      console.log('result: ', result);
+      if (!result.token) {
+        setFeedbackCommon({ msg: result.err, class: 'danger' });
+        return;
+      }
+      setFeedbackCommon({ msg: result.msg, class: 'success' });
     },
   });
 
-  console.log('formik.errors:', formik.errors);
+  // console.log('formik.errors:', formik.errors);
 
   return (
     <div className={style.wrapper}>
@@ -35,15 +45,23 @@ function LoginForm() {
             type="text"
             name="email"
             placeholder="Email"
-            className={`${style.input} ${
-              formik.touched.password && formik.errors.email ? style.inputErr : ''
-            }`}
+            className={`${style.input} 
+            ${formik.touched.email && formik.errors.email ? style.inputErr : ''}
+            ${
+              formik.touched.email && !formik.errors.email
+                ? style.inputSucc
+                : ''
+            }
+            `}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.touched.password && formik.errors.email && (
+          {formik.touched.email && formik.errors.email && (
             <p className={style.inputErrMsg}>{formik.errors.email}</p>
+          )}
+          {formik.touched.email && !formik.errors.email && (
+            <p className={style.inputSuccMsg}>Looks good</p>
           )}
         </div>
 
@@ -52,9 +70,18 @@ function LoginForm() {
             type="password"
             name="password"
             placeholder="Password"
-            className={`${style.input} ${
-              formik.touched.password && formik.errors.password ? style.inputErr : ''
-            }`}
+            className={`${style.input} 
+            ${
+              formik.touched.password && formik.errors.password
+                ? style.inputErr
+                : ''
+            }
+            ${
+              formik.touched.password && !formik.errors.password
+                ? style.inputSucc
+                : ''
+            }
+            `}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
@@ -62,11 +89,18 @@ function LoginForm() {
           {formik.touched.password && formik.errors.password && (
             <p className={style.inputErrMsg}>{formik.errors.password}</p>
           )}
+          {formik.touched.password && !formik.errors.password && (
+            <p className={style.inputSuccMsg}>Looks good</p>
+          )}
         </div>
         <div className={style.group}>
-          <Button isDisabled={!(formik.dirty && formik.isValid)}>Sign In</Button>
+          <Button isDisabled={!(formik.dirty && formik.isValid)}>
+            Sign In
+          </Button>
         </div>
-        {feedbackMsg && <p className={style.feedback}>{feedbackMsg}</p>}
+        {feedbackCommon && (
+          <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
+        )}
       </form>
     </div>
   );

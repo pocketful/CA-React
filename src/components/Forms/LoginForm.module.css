@@ -40,26 +40,64 @@
 
 .inputErr {
   background-color: #8b444487;
+  /* border: 2px solid #843c3c; */
+}
+
+.inputSucc {
+  border: 2px solid #2d714b82;
 }
 
 .inputErrMsg {
-  /* text-align: center; */
   padding-left: 20px;
-  color: #682c2c;
+  color: #843c3c;
   /* color: #951b1b; */
 }
 
-.feedback {
-  text-align: center;
+.inputSuccMsg {
+  padding-left: 20px;
+  color: #2d714b;
 }
 
-@media screen and (max-width: 768px) {
+.success {
+  /* color: #2d714b; */
+  color: #fff;
+  background-color: #2d714b82;
+  padding: 0.375rem 0.75rem;
+  border-radius: 40px;
+  height: 50px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.danger {
+  /* color: #951b1b; */
+  color: #fff;
+  background-color: #8b444487;
+  padding: 0.375rem 0.75rem;
+  border-radius: 40px;
+  height: 50px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+@media screen and (max-width: 700px) {
   .wrapper {
-    width: 90%;
+    width: 60%;
   }
 }
 @media screen and (max-width: 600px) {
   .wrapper {
-    width: 100%;
+    width: 70%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .wrapper {
+    width: 85%;
   }
 }
