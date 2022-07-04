@@ -20,7 +20,7 @@ function AddForm() {
             rows="6"
             name="description"
             placeholder="Description"
-            className={`${style.input} ${style.textarea}`}
+            className={style.textarea}
           />
         </div>
         <div className={style.group}>
