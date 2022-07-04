@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
+import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
 
@@ -35,24 +36,6 @@ function LoginForm() {
 
   // console.log('formik.errors:', formik.errors);
 
-  function inputFeedback(field) {
-    return formik.touched[field] && formik.errors[field]
-      ? style.inputErr
-      : formik.touched[field] && !formik.errors[field]
-      ? style.inputSucc
-      : '';
-  }
-
-  function inputFeedbackText(field) {
-    return formik.touched[field] && formik.errors[field] ? (
-      <p className={style.inputErrMsg}>{formik.errors[field]}</p>
-    ) : (
-      formik.touched[field] && !formik.errors[field] && (
-        <p className={style.inputSuccMsg}>Looks good!</p>
-      )
-    );
-  }
-
   return (
     <div className={style.wrapper}>
       <h2>Have an account?</h2>
@@ -63,12 +46,12 @@ function LoginForm() {
             type="text"
             name="email"
             placeholder="Email"
-            className={`${style.input} ${inputFeedback('email')}`}
+            className={`${style.input} ${inputFeedback('email', formik)}`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {inputFeedbackText('email')}
+          {inputFeedbackText('email', formik)}
         </div>
 
         <div className={style.group}>
@@ -76,12 +59,12 @@ function LoginForm() {
             type="password"
             name="password"
             placeholder="Password"
-            className={`${style.input} ${inputFeedback('password')}`}
+            className={`${style.input} ${inputFeedback('password', formik)}`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
-          {inputFeedbackText('password')}
+          {inputFeedbackText('password', formik)}
         </div>
         <div className={style.group}>
           <Button isDisabled={!(formik.dirty && formik.isValid)}>

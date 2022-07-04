@@ -1,0 +1,19 @@
+.inputErr {
+  background-color: #8b444487;
+  /* border: 2px solid #843c3c; */
+}
+
+.inputSucc {
+  border: 2px solid #2d714b82;
+}
+
+.inputErrMsg {
+  padding-left: 20px;
+  color: #843c3c;
+  /* color: #951b1b; */
+}
+
+.inputSuccMsg {
+  padding-left: 20px;
+  color: #2d714b;
+}
