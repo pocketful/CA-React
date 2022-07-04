@@ -38,6 +38,17 @@
   border-radius: 40px;
 }
 
+.inputErr {
+  background-color: #8b444487;
+}
+
+.inputErrMsg {
+  /* text-align: center; */
+  padding-left: 20px;
+  color: #682c2c;
+  /* color: #951b1b; */
+}
+
 @media screen and (max-width: 768px) {
   .wrapper {
     width: 90%;
