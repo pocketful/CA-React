@@ -1,8 +1,13 @@
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
-import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
+import {
+  inputFeedback,
+  inputFeedbackText,
+} from '../../helpers/inputFeedback/inputFeedback';
+import AuthContext from '../../store/authContext';
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
 
@@ -14,7 +19,9 @@ const initialValues = {
 };
 
 function LoginForm() {
+  let history = useHistory();
   const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
+  const { login } = useContext(AuthContext);
 
   const formik = useFormik({
     initialValues,
@@ -31,6 +38,10 @@ function LoginForm() {
         return;
       }
       setFeedbackCommon({ msg: result.msg, class: 'success' });
+      login(values.email);
+      setTimeout(() => {
+        history.replace('/');
+      }, 2000);
     },
   });
 

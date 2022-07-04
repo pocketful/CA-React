@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
@@ -7,9 +8,29 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
+import AuthContext from './store/authContext';
 
 function App() {
+  const [userEmail, setUserEmail] = useState('');
+
+  function login(email) {
+    console.log('logged in');
+    setUserEmail(email);
+  }
+
+  function logout() {
+    console.log('logout');
+    setUserEmail(null);
+  }
+
+  const ctx = {
+    login,
+    logout,
+    userEmail,
+  };
+
   return (
+    <AuthContext.Provider value={ctx}>
     <div className="App">
       <Header />
       <Container>
@@ -32,6 +53,7 @@ function App() {
         </Switch>
       </Container>
     </div>
+    </AuthContext.Provider>
   );
 }
 
