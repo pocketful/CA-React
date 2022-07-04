@@ -7,7 +7,8 @@ import {
   inputFeedback,
   inputFeedbackText,
 } from '../../helpers/inputFeedback/inputFeedback';
-import AuthContext from '../../store/authContext';
+import { AuthContext } from '../../store/authContext';
+
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
 
