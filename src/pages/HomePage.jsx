@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Grid from '../components/UI/Grid/Grid';
+import CardList from '../components/CardList/CardList';
 
 // const baseUrl = process.env.REACT_APP_BASE_URL;
 // const endpoint = 'v1/content/skills';
@@ -28,14 +28,7 @@ function HomePage() {
   return (
     <>
       <h1>Skills</h1>
-      <Grid>
-        {skillsArr.map((dataObj, idx) => (
-          <article key={idx}>
-            <h3>{dataObj.title}</h3>
-            <p>{dataObj.description}</p>
-          </article>
-        ))}
-      </Grid>
+      <CardList data={skillsArr} />
     </>
   );
 }
