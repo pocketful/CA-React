@@ -30,3 +30,9 @@
   background: #8e837d;
   /* color: #000; */
 }
+
+.btn:disabled {
+  background: #b9b9b9;
+  color: #727272;
+  border: 1px solid transparent;
+}

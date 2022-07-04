@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import Button from '../UI/Button/Button';
 import style from './LoginForm.module.css';
@@ -9,6 +10,8 @@ const initialValues = {
 };
 
 function LoginForm() {
+  const [feedbackMsg, setFeedbackMsg] = useState('');
+
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -33,13 +36,13 @@ function LoginForm() {
             name="email"
             placeholder="Email"
             className={`${style.input} ${
-              formik.errors.email ? style.inputErr : ''
+              formik.touched.password && formik.errors.email ? style.inputErr : ''
             }`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.errors.email && (
+          {formik.touched.password && formik.errors.email && (
             <p className={style.inputErrMsg}>{formik.errors.email}</p>
           )}
         </div>
@@ -50,19 +53,20 @@ function LoginForm() {
             name="password"
             placeholder="Password"
             className={`${style.input} ${
-              formik.errors.password ? style.inputErr : ''
+              formik.touched.password && formik.errors.password ? style.inputErr : ''
             }`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
-          {formik.errors.password && (
+          {formik.touched.password && formik.errors.password && (
             <p className={style.inputErrMsg}>{formik.errors.password}</p>
           )}
         </div>
         <div className={style.group}>
-          <Button>Sign In</Button>
+          <Button isDisabled={!(formik.dirty && formik.isValid)}>Sign In</Button>
         </div>
+        {feedbackMsg && <p className={style.feedback}>{feedbackMsg}</p>}
       </form>
     </div>
   );
