@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import CardList from '../components/CardList/CardList';
+import { getFetch } from '../helpers/fetch';
 
-// const baseUrl = process.env.REACT_APP_BASE_URL;
-// const endpoint = 'v1/content/skills';
-const baseUrl = './data/skills.json';
+// const endpoint = 'v1/content/skills'; //TODO
+const endpoint = './data/skills.json';
 
 function HomePage() {
   const [skillsArr, setSkillsArr] = useState([]);
   console.log(skillsArr);
-  
+
   async function getSkills() {
     try {
-      // const resp = await fetch(`${baseUrl}/${endpoint}`);
-      const resp = await fetch(baseUrl);
-      const data = await resp.json();
+      const data = await getFetch(endpoint);
       console.log('data:', data);
       setSkillsArr(data);
     } catch (err) {
