@@ -11,19 +11,25 @@ import RegisterPage from './pages/RegisterPage';
 import AuthContext from './store/authContext';
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('userToken'));
   const [userEmail, setUserEmail] = useState('');
 
-  function login(email) {
+  function login(userToken, email) {
     console.log('logged in');
+    setToken(userToken);
     setUserEmail(email);
+    localStorage.setItem('userToken', userToken);
   }
 
   function logout() {
     console.log('logout');
+    setToken(null);
     setUserEmail(null);
+    localStorage.removeItem('userToken');
   }
 
   const ctx = {
+    isLoggedIn: !!token,
     login,
     logout,
     userEmail,
@@ -31,28 +37,28 @@ function App() {
 
   return (
     <AuthContext.Provider value={ctx}>
-    <div className="App">
-      <Header />
-      <Container>
-        <Switch>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Route path="/add">
-            <AddPage />
-          </Route>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
-        </Switch>
-      </Container>
-    </div>
+      <div className="App">
+        <Header />
+        <Container>
+          <Switch>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Route path="/add">
+              <AddPage />
+            </Route>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="*">
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </Container>
+      </div>
     </AuthContext.Provider>
   );
 }

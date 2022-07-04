@@ -38,7 +38,7 @@ function LoginForm() {
         return;
       }
       setFeedbackCommon({ msg: result.msg, class: 'success' });
-      login(values.email);
+      login(result.token, values.email);
       setTimeout(() => {
         history.replace('/');
       }, 2000);
