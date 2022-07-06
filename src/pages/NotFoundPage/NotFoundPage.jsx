@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../components/UI/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import style from './NotFoundPage.module.css';
 
 function NotFoundPage() {
@@ -12,7 +12,7 @@ function NotFoundPage() {
       </p>
       <div className={style.btnWrapper}>
         <Link to="/login">
-          <Button> Go to login page</Button>
+          <Button>Go to login page</Button>
         </Link>
         <Link to="/">
           <Button>Go to homepage</Button>
