@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url('./assets/bg.png') no-repeat 50% 35%/cover;
+  background: url('./assets/bg.png') no-repeat 50% 35% / cover;
   /* background: url('./assets/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,6 +58,7 @@ h1 {
   letter-spacing: 8px;
   text-transform: uppercase;
   margin-bottom: 0.8em;
+  line-height: 1.5;
 }
 
 h2 {

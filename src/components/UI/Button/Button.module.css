@@ -9,30 +9,20 @@
   padding-left: 20px;
   padding-right: 20px;
   transition: 0.3s;
-  background: #cdb9af;
-  border: 1px solid #cdb9af;
-  /* background: #fbceb5;
-  border: 1px solid #fbceb5; */
-  color: #000;
+  background: #aa9b93;
+  border: 1px solid transparent;
+  color: #fff;
   text-transform: uppercase;
   cursor: pointer;
   letter-spacing: 0.8px;
 }
-
 .btn:hover {
-  background: #aa9b93;
-  /* background: #000; */
-  border: 1px solid transparent;
-  color: #fff;
-}
-
-.btn:active {
   background: #8e837d;
-  /* color: #000; */
 }
-
+.btn:active {
+  background: #756c67;
+}
 .btn:disabled {
   background: #b9b9b9;
   color: #727272;
-  border: 1px solid transparent;
 }
