@@ -1,17 +1,31 @@
+import { useFormik } from 'formik';
 import style from './Form.module.css';
 import Button from '../UI/Button/Button';
 
+const initialValues = {
+  title: '',
+  description: '',
+};
+
 function AddForm() {
+  const formik = useFormik({
+    initialValues,
+    onSubmit: async (values) => {
+      console.log('submitted values: ', values);
+    },
+  });
   return (
-    <div className={style.wrapper}>
+    <>
       <h2>Add new skill</h2>
-      <form>
+      <form onSubmit={formik.handleSubmit} className={style.wrapper}>
         <div className={style.group}>
           <input
             type="text"
             name="title"
             placeholder="Title"
             className={style.input}
+            onChange={formik.handleChange}
+            value={formik.values.title}
           />
         </div>
         <div className={style.group}>
@@ -21,13 +35,15 @@ function AddForm() {
             name="description"
             placeholder="Description"
             className={style.textarea}
+            onChange={formik.handleChange}
+            value={formik.values.description}
           />
         </div>
         <div className={style.group}>
           <Button>Add</Button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 

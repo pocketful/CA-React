@@ -53,7 +53,7 @@ function RegisterForm() {
   });
 
   return (
-    <div>
+    <>
       <h2>Don't have an account?</h2>
       <form onSubmit={formik.handleSubmit} className={style.wrapper}>
         <div className={style.group}>
@@ -97,7 +97,7 @@ function RegisterForm() {
           <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
         )}
       </form>
-    </div>
+    </>
   );
 }
 

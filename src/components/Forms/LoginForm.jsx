@@ -45,9 +45,9 @@ function LoginForm() {
   });
 
   return (
-    <div className={style.wrapper}>
+    <>
       <h2>Have an account?</h2>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className={style.wrapper}>
         <div className={style.group}>
           <input
             type="email"
@@ -81,7 +81,7 @@ function LoginForm() {
           <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
         )}
       </form>
-    </div>
+    </>
   );
 }
 
