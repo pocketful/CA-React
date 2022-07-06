@@ -1,19 +1,30 @@
-.inputErr {
-  background-color: #8b444487;
+input.inputErr {
+  /* background-color: #8b444487; */
+  background-color: #8b444470;
   /* border: 2px solid #843c3c; */
 }
 
-.inputSucc {
-  border: 2px solid #2d714b82;
+input.inputSucc {
+  /* border: 2px solid #5eac8190; */
+  border: 2px solid #05563a90;
+  border: 2px solid #2d714b90;
+}
+
+.inputFeedbackMsg {
+  /* font-size: 1.1rem; */
+  padding-left: 20px;
+  /* font-weight: 600; */
 }
 
 .inputErrMsg {
-  padding-left: 20px;
-  color: #843c3c;
-  /* color: #951b1b; */
+  composes: inputFeedbackMsg;
+  /* color: #843c3c; */
+  color: #770707;
 }
 
 .inputSuccMsg {
-  padding-left: 20px;
-  color: #2d714b;
+  composes: inputFeedbackMsg;
+  /* color: #fff; */
+  color: #05563a;
+  /* color: #d1ded1; */
 }

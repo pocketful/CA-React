@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import style from './Header.module.css';
 import Flex from '../UI/Flex/Flex';
+import logo from '../../assets/logo.png';
 
 function Header() {
   return (
     <header className={style.header}>
       <Flex>
-        <img className={style.img} src="logo.png" alt="React logo" />
-        <nav className={style.nav}> 
+        <img className={style.img} src={logo} alt="React logo" />
+        <nav className={style.nav}>
           <NavLink to="/login">Login</NavLink>
           <NavLink to="/register">Register</NavLink>
           <NavLink exact to="/">Home</NavLink>

@@ -16,7 +16,7 @@ export function inputFeedbackText(field, formik) {
     return <p className={style.inputErrMsg}>{formik.errors[field]}</p>;
   }
   if (formik.touched[field] && !formik.errors[field]) {
-    return <p className={style.inputSuccMsg}>Looks good!</p>;
+    return <p className={style.inputSuccMsg}>looks good!</p>;
   }
   // return formik.touched[field] && formik.errors[field] ? (
   //   <p className={style.inputErrMsg}>{formik.errors[field]}</p>
