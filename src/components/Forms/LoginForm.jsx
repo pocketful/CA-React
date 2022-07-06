@@ -11,8 +11,6 @@ import style from './Form.module.css';
 const endpoint = 'v1/auth/login';
 
 const initialValues = {
-  // email: 'hermionegranger@email.com',
-  // password: 'secret123',
   email: '',
   password: '',
 };
@@ -26,10 +24,9 @@ function LoginForm() {
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string().email('invalid email address').required(),
-      password: Yup.string().min(4, 'min 4 characters').max(20).required(),
+      password: Yup.string().min(4, 'min 4 characters').max(50, 'max 50 characters').required(),
     }),
     onSubmit: async (values) => {
-      console.log('submitted values: ', values);
       const result = await postFetch(endpoint, values);
       console.log('result: ', result);
       if (!result.token) {
@@ -39,7 +36,7 @@ function LoginForm() {
       setFeedbackCommon({ msg: result.msg, class: 'success' });
       login(result.token, values.email);
       setTimeout(() => {
-        // history.replace('/'); // TODO
+        history.replace('/');
       }, 2000);
     },
   });

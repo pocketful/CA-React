@@ -10,9 +10,6 @@ import style from './Form.module.css';
 const endpoint = 'v1/auth/register';
 
 const initialValues = {
-  // email: 'hermionegranger@email.com',
-  // password: 'secret123',
-  // passwordRef: 'secret123',
   email: '',
   password: '',
   passwordRef: '',
@@ -26,13 +23,12 @@ function RegisterForm() {
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string().email('invalid email address').required(),
-      password: Yup.string().min(4, 'min 4 characters').max(20).required(),
+      password: Yup.string().min(4, 'min 4 characters').max(50, 'max 50 characters').required(),
       passwordRef: Yup.string()
         .required('please retype your password')
         .oneOf([Yup.ref('password'), null], 'passwords must match'),
     }),
     onSubmit: async (values) => {
-      console.log('submitted values: ', values);
       const result = await postFetch(endpoint, {
         email: values.email,
         password: values.password,
@@ -47,7 +43,7 @@ function RegisterForm() {
         class: 'success',
       });
       setTimeout(() => {
-        // history.replace('/login'); // TODO
+        history.replace('/login');
       }, 2000);
     },
   });
@@ -92,7 +88,11 @@ function RegisterForm() {
           />
           {inputFeedbackText('passwordRef', formik)}
         </div>
-        <Button isDisabled={!(formik.dirty && formik.isValid)}>Sign In</Button>
+        <div className={style.group}>
+          <Button isDisabled={!(formik.dirty && formik.isValid)}>
+            Sign Up
+          </Button>
+        </div>
         {feedbackCommon.msg.length !== 0 && (
           <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
         )}

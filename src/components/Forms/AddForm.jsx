@@ -1,12 +1,14 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import {
-  inputFeedback,
-  inputFeedbackText,
-} from '../../helpers/inputFeedback/inputFeedback';
+import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import style from './Form.module.css';
+import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
+import { useAuthCtx } from '../../store/authContext';
+import { useHistory } from 'react-router-dom';
+
+const endpoint = 'v1/content/skills';
 
 const initialValues = {
   title: '',
@@ -14,16 +16,28 @@ const initialValues = {
 };
 
 function AddForm() {
+  const history = useHistory();
+  const { token } = useAuthCtx();
+  if (!token) history.push('/login');
+  console.log('add token:', token);
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
-      title: Yup.string().min(2, 'min 2 characters').max(255).required(),
-      description: Yup.string().min(4, 'min 4 characters').max(255).required(),
+      title: Yup.string().min(2, 'min 2 characters').max(255, 'max 255 characters').required(),
+      description: Yup.string().min(4, 'min 4 characters').required(),
     }),
     onSubmit: async (values) => {
       console.log('submitted values: ', values);
+      const result = await postFetch(endpoint, values, token);
+      console.log('result: ', result);
+      if (result.err) {
+        console.log('result.err:', result.err);
+        return;
+      }
+      console.log('ok');
     },
   });
+
   return (
     <>
       <h2>Add new skill</h2>
@@ -57,7 +71,7 @@ function AddForm() {
           {inputFeedbackText('description', formik)}
         </div>
         <div className={style.group}>
-          <Button>Add</Button>
+          <Button isDisabled={!(formik.dirty && formik.isValid)}>Add</Button>
         </div>
       </form>
     </>

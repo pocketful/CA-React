@@ -2,7 +2,7 @@ export async function getFetch(endpoint) {
   try {
     // const resp = await fetch(`${baseUrl}/${endpoint}`);
     const resp = await fetch(endpoint);
-    console.log('resp:', resp);
+    console.log('resp fetch:', resp);
     if (resp.ok) {
       return resp.json();
     }
@@ -12,11 +12,16 @@ export async function getFetch(endpoint) {
   }
 }
 
-export async function postFetch(endpoint, inputData) {
+export async function postFetch(endpoint, inputData, token = null) {
   try {
     const resp = await fetch(`${baseUrl}/${endpoint}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: token ? {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      } : {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(inputData),
     });
     console.log('resp fetch:', resp);
