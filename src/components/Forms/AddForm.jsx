@@ -19,22 +19,31 @@ function AddForm() {
   const history = useHistory();
   const { token } = useAuthCtx();
   if (!token) history.push('/login');
-  console.log('add token:', token);
+  const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
+
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
-      title: Yup.string().min(2, 'min 2 characters').max(255, 'max 255 characters').required(),
+      title: Yup.string()
+        .min(2, 'min 2 characters')
+        .max(255, 'max 255 characters')
+        .required(),
       description: Yup.string().min(4, 'min 4 characters').required(),
     }),
     onSubmit: async (values) => {
-      console.log('submitted values: ', values);
       const result = await postFetch(endpoint, values, token);
       console.log('result: ', result);
       if (result.err) {
-        console.log('result.err:', result.err);
+        setFeedbackCommon({ msg: result.err, class: 'danger' });
         return;
       }
-      console.log('ok');
+      setFeedbackCommon({
+        msg: 'New skill added successfully',
+        class: 'success',
+      });
+      setTimeout(() => {
+        history.push('/');
+      }, 2000);
     },
   });
 
@@ -73,6 +82,9 @@ function AddForm() {
         <div className={style.group}>
           <Button isDisabled={!(formik.dirty && formik.isValid)}>Add</Button>
         </div>
+        {feedbackCommon.msg.length !== 0 && (
+          <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
+        )}
       </form>
     </>
   );

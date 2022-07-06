@@ -14,14 +14,19 @@ export async function getFetch(endpoint) {
 
 export async function postFetch(endpoint, inputData, token = null) {
   try {
+    const authorization = token ? { Authorization: `Bearer ${token}` } : {};
     const resp = await fetch(`${baseUrl}/${endpoint}`, {
       method: 'POST',
-      headers: token ? {
+      headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      } : {
-        'Content-Type': 'application/json',
+        ...authorization,
       },
+      // headers: token ? {
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Bearer ${token}`,
+      // } : {
+      //   'Content-Type': 'application/json',
+      // },
       body: JSON.stringify(inputData),
     });
     console.log('resp fetch:', resp);
