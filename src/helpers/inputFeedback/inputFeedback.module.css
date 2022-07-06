@@ -1,10 +1,10 @@
-input.inputErr {
+input.inputErr, textarea.inputErr {
   /* background-color: #8b444487; */
   background-color: #8b444470;
   /* border: 2px solid #843c3c; */
 }
 
-input.inputSucc {
+input.inputSucc, textarea.inputSucc {
   /* border: 2px solid #5eac8190; */
   border: 2px solid #05563a90;
   border: 2px solid #2d714b90;
