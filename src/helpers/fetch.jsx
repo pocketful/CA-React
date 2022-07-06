@@ -1,7 +1,13 @@
-export async function getFetch(endpoint) {
+export async function getFetch(endpoint, token = null) {
   try {
-    // const resp = await fetch(`${baseUrl}/${endpoint}`);
-    const resp = await fetch(endpoint);
+    const authorization = token
+      ? {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      : {};
+    const resp = await fetch(`${baseUrl}/${endpoint}`, authorization);
     console.log('resp fetch:', resp);
     if (resp.ok) {
       return resp.json();
