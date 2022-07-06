@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
+import PrivateRoute from './components/PrivateRoute';
 import Container from './components/UI/Container/Container';
 import AddPage from './pages/AddPage';
 import HomePage from './pages/HomePage';
@@ -20,12 +21,12 @@ function App() {
             <Route path="/register">
               <RegisterPage />
             </Route>
-            <Route path="/add">
+            <PrivateRoute path="/add">
               <AddPage />
-            </Route>
-            <Route exact path="/">
+            </PrivateRoute>
+            <PrivateRoute exact path="/">
               <HomePage />
-            </Route>
+            </PrivateRoute>
             <Route path="*">
               <NotFoundPage />
             </Route>
