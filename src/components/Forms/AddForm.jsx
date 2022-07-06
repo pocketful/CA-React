@@ -1,4 +1,4 @@
-import style from './AddForm.module.css';
+import style from './Form.module.css';
 import Button from '../UI/Button/Button';
 
 function AddForm() {
