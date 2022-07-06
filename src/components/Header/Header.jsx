@@ -8,7 +8,7 @@ function Header() {
   const { isLoggedIn, logout } = useAuthCtx();
   return (
     <header className={style.header}>
-      <Flex>
+      <Flex jc="spaceBetween">
         <img className={style.img} src={logo} alt="React logo" />
         <nav className={style.nav}>
           {isLoggedIn && (

@@ -6,7 +6,7 @@ import Container from './components/UI/Container/Container';
 import AddPage from './pages/AddPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import NotFoundPage from './pages/NotFoundPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 
 function App() {
