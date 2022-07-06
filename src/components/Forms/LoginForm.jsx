@@ -3,18 +3,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
-import {
-  inputFeedback,
-  inputFeedbackText,
-} from '../../helpers/inputFeedback/inputFeedback';
+import { inputFeedback, inputFeedbackText} from '../../helpers/inputFeedback/inputFeedback';
 import { useAuthCtx } from '../../store/authContext';
-
 import Button from '../UI/Button/Button';
-import style from './LoginForm.module.css';
+import style from './Form.module.css';
 
 const endpoint = 'v1/auth/login';
 
 const initialValues = {
+  // email: 'hermionegranger@email.com',
+  // password: 'secret123',
   email: '',
   password: '',
 };
@@ -41,12 +39,10 @@ function LoginForm() {
       setFeedbackCommon({ msg: result.msg, class: 'success' });
       login(result.token, values.email);
       setTimeout(() => {
-        history.replace('/');
+        // history.replace('/'); // TODO
       }, 2000);
     },
   });
-
-  // console.log('formik.errors:', formik.errors);
 
   return (
     <div className={style.wrapper}>
@@ -54,8 +50,7 @@ function LoginForm() {
       <form onSubmit={formik.handleSubmit}>
         <div className={style.group}>
           <input
-            // type="email" // TODO
-            type="text"
+            type="email"
             name="email"
             placeholder="Email"
             className={`${style.input} ${inputFeedback('email', formik)}`}
@@ -65,7 +60,6 @@ function LoginForm() {
           />
           {inputFeedbackText('email', formik)}
         </div>
-
         <div className={style.group}>
           <input
             type="password"
@@ -83,7 +77,7 @@ function LoginForm() {
             Sign In
           </Button>
         </div>
-        {feedbackCommon && (
+        {feedbackCommon.msg.length !== 0 && (
           <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
         )}
       </form>

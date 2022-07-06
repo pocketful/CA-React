@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
@@ -18,6 +19,9 @@ const initialValues = {
 };
 
 function RegisterForm() {
+  let history = useHistory();
+  const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
+
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -35,14 +39,18 @@ function RegisterForm() {
       });
       console.log('result: ', result);
       if (result.err) {
-        console.log('result.err:', result.err);
+        setFeedbackCommon({ msg: result.err, class: 'danger' });
         return;
       }
-      console.log('ok');
+      setFeedbackCommon({
+        msg: 'New user successfully created',
+        class: 'success',
+      });
+      setTimeout(() => {
+        // history.replace('/login'); // TODO
+      }, 2000);
     },
   });
-
-  console.log('formik.errors ===', formik.errors);
 
   return (
     <div>
@@ -84,11 +92,10 @@ function RegisterForm() {
           />
           {inputFeedbackText('passwordRef', formik)}
         </div>
-        <div className={style.group}>
-          <Button isDisabled={!(formik.dirty && formik.isValid)}>
-            Sign In
-          </Button>
-        </div>
+        <Button isDisabled={!(formik.dirty && formik.isValid)}>Sign In</Button>
+        {feedbackCommon.msg.length !== 0 && (
+          <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>
+        )}
       </form>
     </div>
   );
