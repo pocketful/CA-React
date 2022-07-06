@@ -2,8 +2,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
+import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
 import style from './Form.module.css';
+
+const endpoint = 'v1/auth/register';
 
 const initialValues = {
   // email: 'hermionegranger@email.com',
@@ -26,6 +29,16 @@ function RegisterForm() {
     }),
     onSubmit: async (values) => {
       console.log('submitted values: ', values);
+      const result = await postFetch(endpoint, {
+        email: values.email,
+        password: values.password,
+      });
+      console.log('result: ', result);
+      if (result.err) {
+        console.log('result.err:', result.err);
+        return;
+      }
+      console.log('ok');
     },
   });
 
@@ -72,7 +85,9 @@ function RegisterForm() {
           {inputFeedbackText('passwordRef', formik)}
         </div>
         <div className={style.group}>
-          <Button>Sign Up</Button>
+          <Button isDisabled={!(formik.dirty && formik.isValid)}>
+            Sign In
+          </Button>
         </div>
       </form>
     </div>
