@@ -8,7 +8,6 @@ import { getFetch } from '../helpers/fetch';
 import { useAuthCtx } from '../store/authContext';
 
 const endpoint = 'v1/content/skills';
-// const endpoint = './data/skills.json';
 
 function HomePage() {
   const [skillsArr, setSkillsArr] = useState([]);
@@ -22,12 +21,10 @@ function HomePage() {
   async function getSkills() {
     try {
       const data = await getFetch(endpoint, token);
-      // console.log('data:', data);
       setSkillsArr(data);
     } catch (err) {
       console.log('error in getSkills: ', err);
       setIsServerOn(false);
-      // history.replace('*');
     } finally {
       setIsLoading(false);
     }
@@ -49,10 +46,6 @@ function HomePage() {
       ) : (
         <CardList data={skillsArr} />
       )}
-      {/* {isLoading && <Loader />}
-      {!isLoading && !isServerOn && <ServerError />}
-      {!isLoading && isServerOn && skillsArr.length === 0 && <EmptyArr name='skills' link='/add' />}
-      {!isLoading && skillsArr.length > 0 && <CardList data={skillsArr} />} */}
     </>
   );
 }

@@ -7,7 +7,7 @@ function Flex({ children, jc }) {
 
 Flex.propTypes = {
   children: PropTypes.node.isRequired,
-  jc: PropTypes.oneOf(['spaceBetween', 'spaceAround']),
+  jc: PropTypes.oneOf(['spaceBetween', 'spaceAround', 'spaceEvenly', 'flexStart', 'flexEnd', 'center']),
 };
 
 export default Flex;

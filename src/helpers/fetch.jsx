@@ -27,12 +27,6 @@ export async function postFetch(endpoint, inputData, token = null) {
         'Content-Type': 'application/json',
         ...authorization,
       },
-      // headers: token ? {
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Bearer ${token}`,
-      // } : {
-      //   'Content-Type': 'application/json',
-      // },
       body: JSON.stringify(inputData),
     });
     // console.log('resp fetch:', resp);

@@ -5,6 +5,7 @@ export const AuthContext = createContext({
   login() {},
   logout() {},
   userEmail: null,
+  token: null,
 });
 
 AuthContext.displayName = 'AuthContext';

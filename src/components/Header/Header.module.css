@@ -15,16 +15,12 @@
 .nav {
   display: flex;
 }
-
 .nav > a {
   padding: 0.5em;
 }
 .nav > a:hover {
   color: #e4d7d0;
-  /* color: #fbceb5; */
-  /* color: rgb(236, 177, 37); */
-  /* text-decoration: underline; */
 }
 .nav > a:active {
-  color: rgb(235, 157, 0);
+  color: #fbceb5;
 }

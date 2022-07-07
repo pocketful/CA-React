@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
-import style from './UnauthorizedPage.module.css';
+import style from './ErrorPage.module.css';
 
 function UnauthorizedPage() {
   return (

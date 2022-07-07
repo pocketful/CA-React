@@ -1,30 +1,23 @@
-input.inputErr, textarea.inputErr {
-  /* background-color: #8b444487; */
-  /* background-color: #8b444470; */
+input.inputErr,
+textarea.inputErr {
   border: 2px solid #843c3c;
 }
 
-input.inputSucc, textarea.inputSucc {
-  /* border: 2px solid #5eac8190; */
-  border: 2px solid #05563a90;
+input.inputSucc,
+textarea.inputSucc {
   border: 2px solid #2d714b90;
 }
 
 .inputFeedbackMsg {
-  /* font-size: 1.1rem; */
   padding-left: 20px;
-  /* font-weight: 600; */
 }
 
 .inputErrMsg {
   composes: inputFeedbackMsg;
-  /* color: #843c3c; */
   color: #770707;
 }
 
 .inputSuccMsg {
   composes: inputFeedbackMsg;
-  /* color: #fff; */
   color: #05563a;
-  /* color: #d1ded1; */
 }

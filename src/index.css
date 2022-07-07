@@ -4,10 +4,6 @@
 
 body {
   background: url('./assets/bg.png') no-repeat 50% 35% / cover;
-  /* background: url('./assets/bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 40%; */
   background-color: #cdb9af;
   color: white;
   font-family: 'Lato', sans-serif;
