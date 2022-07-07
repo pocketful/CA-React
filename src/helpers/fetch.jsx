@@ -1,3 +1,5 @@
+import { baseUrl } from "../config";
+
 export async function getFetch(endpoint, token = null) {
   try {
     const authorization = token
@@ -37,5 +39,3 @@ export async function postFetch(endpoint, inputData, token = null) {
   }
 }
 
-export const baseUrl = process.env.REACT_APP_BASE_URL;
-if (!baseUrl) throw new Error('baseUrl not found');
