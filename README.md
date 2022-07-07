@@ -55,22 +55,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <br/>
 
 <table>
-    <tr>
-        <td>Login Page</td>
-        <td>Register Page</td>
-    </tr>
-    <tr>
-        <td><img src="src/assets/img/examples/login.png" alt="example of login page" /></td>
-        <td><img src="src/assets/img/examples/register.png" alt="example of register page" /></td>
-    </tr>
-    <tr>
-        <td>Home (skills) page</td>
-        <td>Add (skill) page</td>
-    </tr>
-    <tr>
-        <td><img src="src/assets/img/examples/home.png" alt="example of home(skills) page" /></td>
-        <td><img src="src/assets/img/examples/add.png" alt="example of add skill page" /></td>
-    </tr>
+  <tr>
+    <td>Login Page</td>
+    <td>Register Page</td>
+    <td>Home (skills) page</td>
+    <td>Add (skill) page</td>
+  </tr>
+  <tr>
+    <td><img src="src/assets/img/examples/login.png" alt="example of login page" /></td>
+    <td><img src="src/assets/img/examples/register.png" alt="example of register page" /></td>
+    <td><img src="src/assets/img/examples/home.png" alt="example of home(skills) page" /></td>
+    <td><img src="src/assets/img/examples/add.png" alt="example of add skill page" /></td>
+  </tr>
 </table>
 
 [🔼 Back To Top](#top)
