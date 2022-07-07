@@ -38,16 +38,16 @@ npm start
 - React
 - CSS Modules
 
+### 📜 Sources
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
 ### 📦 Additionally installed packages
 
 - react-router-dom 5.3.3
 - formik 2.2.9
 - yup 0.32.11
 - prop-types 15.8.1
-
-### 📜 Sources
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -56,8 +56,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <table>
   <tr>
-    <td>Login Page</td>
-    <td>Register Page</td>
+    <td>Login page</td>
+    <td>Register page</td>
     <td>Home (skills) page</td>
     <td>Add (skill) page</td>
   </tr>
