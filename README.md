@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# CA React - Skills page with authentication
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+With this app you can register new user, login and logout, create new skill and see all of your skills.
+<br /><br />
 
-## Available Scripts
+# 🎨 Main features
 
-In the project directory, you can run:
+- Login, Register pages - authentication
+- Home page - show's logged in user's skills
+- Add page - user can add new skill
+- Routes are protected from unauthenticated users
+- All forms has validation
+<br />
 
-### `npm start`
+# 🚀 Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🔨 Configure files
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Rename `.env.example` to `.env` and put your credentials in it. For this project I was using [this](https://autumn-delicate-wilderness.glitch.me) back-end server.
+<br />
 
-### `npm test`
+### 🎈 Start the project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+npm start
+```
 
-### `npm run build`
+- The app runs in the development mode.
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- The page will reload when you make changes.
+- You may also see any lint errors in the console.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 🔧 Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- CSS Modules
 
-### `npm run eject`
+### 📦 Additionally installed packages
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- react-router-dom 5.3.3
+- formik 2.2.9
+- yup 0.32.11
+- prop-types 15.8.1
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📜 Sources
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Learn More
+# 💻 Demo
+<br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<table>
+    <tr>
+        <td>Login Page</td>
+        <td>Register Page</td>
+    </tr>
+    <tr>
+        <td><img src="src/assets/img/examples/login.png" alt="example of login page" /></td>
+        <td><img src="src/assets/img/examples/register.png" alt="example of register page" /></td>
+    </tr>
+    <tr>
+        <td>Home (skills) page</td>
+        <td>Add (skill) page</td>
+    </tr>
+    <tr>
+        <td><img src="src/assets/img/examples/home.png" alt="example of home(skills) page" /></td>
+        <td><img src="src/assets/img/examples/add.png" alt="example of add skill page" /></td>
+    </tr>
+</table>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[🔼 Back To Top](#top)

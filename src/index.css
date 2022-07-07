@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url('./assets/bg.png') no-repeat 50% 35% / cover;
+  background: url('./assets/img/bg.png') no-repeat 50% 35% / cover;
   background-color: #cdb9af;
   color: white;
   font-family: 'Lato', sans-serif;
@@ -63,4 +63,13 @@ h2 {
   font-size: 1.75rem;
   margin-bottom: 1em;
   line-height: 1.5;
+}
+
+@media screen and (max-width: 415px) {
+  body {
+    background-size: auto;
+  }
+  h2 {
+    line-height: 1;
+  }
 }

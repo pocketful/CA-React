@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import style from './Header.module.css';
 import Flex from '../UI/Flex/Flex';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/img/logo.png';
 import { useAuthCtx } from '../../store/authContext';
 
 function Header() {

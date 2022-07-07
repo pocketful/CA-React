@@ -41,6 +41,6 @@
 .textarea {
   composes: textual;
   border-radius: 20px;
-  height: 150px;
+  height: 180px;
 }
 
