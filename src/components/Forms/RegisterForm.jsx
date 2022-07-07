@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
 import style from './Form.module.css';
+import Input from '../Input/Input';
 
 const endpoint = 'v1/auth/register';
 
@@ -53,42 +53,19 @@ function RegisterForm({ onSuccessRegister }) {
     <>
       <h2>Don't have an account?</h2>
       <form onSubmit={formik.handleSubmit} className={style.wrapper}>
-        <div className={style.group}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className={`${style.input} ${inputFeedback('email', formik)}`}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {inputFeedbackText('email', formik)}
-        </div>
-        <div className={style.group}>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className={`${style.input} ${inputFeedback('password', formik)}`}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {inputFeedbackText('password', formik)}
-        </div>
-        <div className={style.group}>
-          <input
-            type="password"
-            name="passwordRef"
-            placeholder="Confirm Password"
-            className={`${style.input} ${inputFeedback('passwordRef', formik)}`}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.passwordRef}
-          />
-          {inputFeedbackText('passwordRef', formik)}
-        </div>
+        <Input type="email" name="email" placeholder="Email" formik={formik} />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          formik={formik}
+        />
+        <Input
+          type="password"
+          name="passwordRef"
+          placeholder="Confirm Password"
+          formik={formik}
+        />
         <div className={style.group}>
           <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
             Sign Up
