@@ -1,15 +1,12 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import {
-  inputFeedback,
-  inputFeedbackText,
-} from '../../helpers/inputFeedback/inputFeedback';
 import style from './Form.module.css';
 import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
 import { useAuthCtx } from '../../store/authContext';
 import { useHistory } from 'react-router-dom';
+import Input from '../Input/Input';
 
 const endpoint = 'v1/content/skills';
 
@@ -54,34 +51,13 @@ function AddForm({ onSuccessAdd }) {
     <>
       <h2>Add new skill</h2>
       <form onSubmit={formik.handleSubmit} className={style.wrapper}>
-        <div className={style.group}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            className={`${style.input} ${inputFeedback('title', formik)}`}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.title}
-          />
-          {inputFeedbackText('title', formik)}
-        </div>
-        <div className={style.group}>
-          <textarea
-            type="text"
-            rows="6"
-            name="description"
-            placeholder="Description"
-            className={`${style.textarea} ${inputFeedback(
-              'description',
-              formik,
-            )}`}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.description}
-          />
-          {inputFeedbackText('description', formik)}
-        </div>
+        <Input type="text" name="title" placeholder="Title" formik={formik} />
+        <Input
+          type="textarea"
+          name="description"
+          placeholder="Description"
+          formik={formik}
+        />
         <div className={style.group}>
           <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
             Add
