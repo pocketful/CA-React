@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Button from '../UI/Button/Button';
 import style from './EmptyArr.module.css';
+import PropTypes from 'prop-types';
 
 function EmptyArr({ name, link }) {
   return (
@@ -12,5 +13,10 @@ function EmptyArr({ name, link }) {
     </div>
   );
 }
+
+EmptyArr.propTypes = {
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+};
 
 export default EmptyArr;

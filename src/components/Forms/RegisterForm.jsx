@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
@@ -15,15 +14,17 @@ const initialValues = {
   passwordRef: '',
 };
 
-function RegisterForm() {
-  let history = useHistory();
+function RegisterForm({ onSuccessRegister }) {
   const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
 
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string().email('invalid email address').required(),
-      password: Yup.string().min(4, 'min 4 characters').max(50, 'max 50 characters').required(),
+      password: Yup.string()
+        .min(4, 'min 4 characters')
+        .max(50, 'max 50 characters')
+        .required(),
       passwordRef: Yup.string()
         .required('please retype your password')
         .oneOf([Yup.ref('password'), null], 'passwords must match'),
@@ -43,7 +44,7 @@ function RegisterForm() {
         class: 'success',
       });
       setTimeout(() => {
-        history.replace('/login');
+        onSuccessRegister();
       }, 2000);
     },
   });
@@ -89,7 +90,7 @@ function RegisterForm() {
           {inputFeedbackText('passwordRef', formik)}
         </div>
         <div className={style.group}>
-          <Button isDisabled={!(formik.dirty && formik.isValid)}>
+          <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
             Sign Up
           </Button>
         </div>

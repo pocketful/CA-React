@@ -1,4 +1,5 @@
 import style from './Card.module.css';
+import PropTypes from 'prop-types';
 
 function Card({ title, description }) {
   return (
@@ -8,5 +9,10 @@ function Card({ title, description }) {
     </article>
   );
 }
+
+Card.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+};
 
 export default Card;

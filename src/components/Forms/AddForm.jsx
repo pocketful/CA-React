@@ -1,7 +1,10 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
+import {
+  inputFeedback,
+  inputFeedbackText,
+} from '../../helpers/inputFeedback/inputFeedback';
 import style from './Form.module.css';
 import { postFetch } from '../../helpers/fetch';
 import Button from '../UI/Button/Button';
@@ -15,10 +18,10 @@ const initialValues = {
   description: '',
 };
 
-function AddForm() {
+function AddForm({ onSuccessAdd }) {
   const history = useHistory();
   const { token } = useAuthCtx();
-  if (!token) history.push('/login');
+  if (!token) history.replace('/login');
   const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
 
   const formik = useFormik({
@@ -42,7 +45,7 @@ function AddForm() {
         class: 'success',
       });
       setTimeout(() => {
-        history.push('/');
+        onSuccessAdd();
       }, 2000);
     },
   });
@@ -80,7 +83,9 @@ function AddForm() {
           {inputFeedbackText('description', formik)}
         </div>
         <div className={style.group}>
-          <Button isDisabled={!(formik.dirty && formik.isValid)}>Add</Button>
+          <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
+            Add
+          </Button>
         </div>
         {feedbackCommon.msg.length !== 0 && (
           <p className={style[feedbackCommon.class]}>{feedbackCommon.msg}</p>

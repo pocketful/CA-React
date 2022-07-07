@@ -16,7 +16,7 @@ function UnauthorizedPage() {
           <Button>Go to login page</Button>
         </Link>
         <Link to="/register">
-          <Button>Go to homeregister page</Button>
+          <Button>Go to register page</Button>
         </Link>
       </div>
     </div>

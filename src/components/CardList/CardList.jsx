@@ -1,5 +1,6 @@
 import Card from '../Card/Card';
 import Grid from '../UI/Grid/Grid';
+import PropTypes from 'prop-types';
 
 function CardList({ data }) {
   return (
@@ -10,5 +11,9 @@ function CardList({ data }) {
     </Grid>
   );
 }
+
+CardList.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default CardList;

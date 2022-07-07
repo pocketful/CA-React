@@ -1,9 +1,8 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
-import { inputFeedback, inputFeedbackText} from '../../helpers/inputFeedback/inputFeedback';
+import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
 import { useAuthCtx } from '../../store/authContext';
 import Button from '../UI/Button/Button';
 import style from './Form.module.css';
@@ -15,8 +14,7 @@ const initialValues = {
   password: '',
 };
 
-function LoginForm() {
-  let history = useHistory();
+function LoginForm({ onSuccessLogin }) {
   const [feedbackCommon, setFeedbackCommon] = useState({ msg: '', class: '' });
   const { login } = useAuthCtx();
 
@@ -24,7 +22,10 @@ function LoginForm() {
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string().email('invalid email address').required(),
-      password: Yup.string().min(4, 'min 4 characters').max(50, 'max 50 characters').required(),
+      password: Yup.string()
+        .min(4, 'min 4 characters')
+        .max(50, 'max 50 characters')
+        .required(),
     }),
     onSubmit: async (values) => {
       const result = await postFetch(endpoint, values);
@@ -36,7 +37,7 @@ function LoginForm() {
       setFeedbackCommon({ msg: result.msg, class: 'success' });
       login(result.token, values.email);
       setTimeout(() => {
-        history.replace('/');
+        onSuccessLogin();
       }, 2000);
     },
   });
@@ -70,7 +71,7 @@ function LoginForm() {
           {inputFeedbackText('password', formik)}
         </div>
         <div className={style.group}>
-          <Button isDisabled={!(formik.dirty && formik.isValid)}>
+          <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
             Sign In
           </Button>
         </div>

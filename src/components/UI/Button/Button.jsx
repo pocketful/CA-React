@@ -1,16 +1,21 @@
 import style from './Button.module.css';
-
-function Button({ children, onClick, isDisabled }) {
+import PropTypes from 'prop-types';
+function Button({ children, type = 'button', isDisabled = false }) {
   return (
     <button
-      type="submit"
+      type={type}
       className={style.btn}
-      onClick={onClick}
       disabled={isDisabled}
     >
       {children}
     </button>
   );
 }
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired, 
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  isDisabled: PropTypes.bool,
+};
 
 export default Button;
