@@ -13,15 +13,15 @@ function Header() {
         <nav className={style.nav}>
           {isLoggedIn && (
             <>
-              <NavLink exact to="/">Home</NavLink>
-              <NavLink to="/add">Add</NavLink>
+              <NavLink exact to="/" activeClassName={style.active}>Home</NavLink>
+              <NavLink to="/add" activeClassName={style.active}>Add</NavLink>
               <Link to="/login" onClick={logout}>Logout</Link>
             </>
           )}
           {!isLoggedIn && (
             <>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/login" activeClassName={style.active}>Login</NavLink>
+              <NavLink to="/register" activeClassName={style.active}>Register</NavLink>
             </>
           )}
         </nav>

@@ -21,6 +21,7 @@
 .nav > a:hover {
   color: #e4d7d0;
 }
-.nav > a:active {
+.nav > a:active,
+.nav > a.active {
   color: #fbceb5;
 }
