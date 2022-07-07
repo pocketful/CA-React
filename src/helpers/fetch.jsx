@@ -8,7 +8,7 @@ export async function getFetch(endpoint, token = null) {
         }
       : {};
     const resp = await fetch(`${baseUrl}/${endpoint}`, authorization);
-    console.log('resp fetch:', resp);
+    // console.log('resp fetch:', resp);
     if (resp.ok) {
       return resp.json();
     }
@@ -35,7 +35,7 @@ export async function postFetch(endpoint, inputData, token = null) {
       // },
       body: JSON.stringify(inputData),
     });
-    console.log('resp fetch:', resp);
+    // console.log('resp fetch:', resp);
     return resp.json();
   } catch (err) {
     console.log('error in postFetch:', err);

@@ -35,7 +35,7 @@ function AddForm({ onSuccessAdd }) {
     }),
     onSubmit: async (values) => {
       const result = await postFetch(endpoint, values, token);
-      console.log('result: ', result);
+      // console.log('result: ', result);
       if (result.err) {
         setFeedbackCommon({ msg: result.err, class: 'danger' });
         return;

@@ -34,7 +34,7 @@ function RegisterForm({ onSuccessRegister }) {
         email: values.email,
         password: values.password,
       });
-      console.log('result: ', result);
+      // console.log('result: ', result);
       if (result.err) {
         setFeedbackCommon({ msg: result.err, class: 'danger' });
         return;

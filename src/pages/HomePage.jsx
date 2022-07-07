@@ -14,8 +14,6 @@ function HomePage() {
   const [skillsArr, setSkillsArr] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isServerOn, setIsServerOn] = useState(true);
-  console.log('skillsArr:', skillsArr);
-  console.log('isServerOn:', isServerOn);
 
   const history = useHistory();
   const { token } = useAuthCtx();
@@ -24,7 +22,7 @@ function HomePage() {
   async function getSkills() {
     try {
       const data = await getFetch(endpoint, token);
-      console.log('data:', data);
+      // console.log('data:', data);
       setSkillsArr(data);
     } catch (err) {
       console.log('error in getSkills: ', err);

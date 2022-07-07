@@ -2,8 +2,12 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { postFetch } from '../../helpers/fetch';
-import { inputFeedback, inputFeedbackText } from '../../helpers/inputFeedback/inputFeedback';
+// import {
+//   inputFeedback,
+//   inputFeedbackText,
+// } from '../../helpers/inputFeedback/inputFeedback';
 import { useAuthCtx } from '../../store/authContext';
+import Input from '../Input/Input';
 import Button from '../UI/Button/Button';
 import style from './Form.module.css';
 
@@ -29,7 +33,7 @@ function LoginForm({ onSuccessLogin }) {
     }),
     onSubmit: async (values) => {
       const result = await postFetch(endpoint, values);
-      console.log('result: ', result);
+      // console.log('result: ', result);
       if (!result.token) {
         setFeedbackCommon({ msg: result.err, class: 'danger' });
         return;
@@ -42,12 +46,23 @@ function LoginForm({ onSuccessLogin }) {
     },
   });
 
+  // console.log('formik values:', formik.values);
+
   return (
     <>
       <h2>Have an account?</h2>
       <form onSubmit={formik.handleSubmit} className={style.wrapper}>
-        <div className={style.group}>
-          <input
+        {/* <div className={style.group}> */}
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          formik={formik}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        {/* <input
             type="email"
             name="email"
             placeholder="Email"
@@ -55,11 +70,20 @@ function LoginForm({ onSuccessLogin }) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
-          />
-          {inputFeedbackText('email', formik)}
-        </div>
-        <div className={style.group}>
-          <input
+          /> */}
+        {/* {inputFeedbackText('email', formik)} */}
+        {/* </div> */}
+        {/* <div className={style.group}> */}
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          formik={formik}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {/* <input
             type="password"
             name="password"
             placeholder="Password"
@@ -67,9 +91,9 @@ function LoginForm({ onSuccessLogin }) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
-          />
-          {inputFeedbackText('password', formik)}
-        </div>
+          /> */}
+        {/* {inputFeedbackText('password', formik)} */}
+        {/* </div> */}
         <div className={style.group}>
           <Button type="submit" isDisabled={!(formik.dirty && formik.isValid)}>
             Sign In
