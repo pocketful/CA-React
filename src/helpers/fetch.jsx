@@ -12,7 +12,7 @@ export async function getFetch(endpoint, token = null) {
     if (resp.ok) {
       return resp.json();
     }
-    throw new Error('404 Not Found');
+    throw new Error('500 Something went wrong.');
   } catch (err) {
     throw err;
   }
