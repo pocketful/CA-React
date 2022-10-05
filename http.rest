@@ -1,0 +1,34 @@
+### Register =============================================================================
+POST https://autumn-delicate-wilderness.glitch.me/v1/auth/register
+Content-Type: application/json
+
+{
+  "email": "hermionegranger@email.com",
+  "password": "secret123"
+}
+
+
+### Login ================================================================================
+POST https://autumn-delicate-wilderness.glitch.me/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "hermionegranger@email.com",
+  "password": "secret123"
+}
+
+
+### Skills GET ===========================================================================
+GET https://autumn-delicate-wilderness.glitch.me/v1/content/skills
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQzLCJlbWFpbCI6Imhlcm1pb25lZ3JhbmdlckBlbWFpbC5jb20iLCJpYXQiOjE2NTY3NTgxMjZ9.mZu2q2ukmD1-woKcBUkmLthXGEt36mQR2chrf5iciNg
+
+
+### Skills POST ==========================================================================
+POST https://autumn-delicate-wilderness.glitch.me/v1/content/skills
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDQzLCJlbWFpbCI6Imhlcm1pb25lZ3JhbmdlckBlbWFpbC5jb20iLCJpYXQiOjE2NTY3NTgxMjZ9.mZu2q2ukmD1-woKcBUkmLthXGEt36mQR2chrf5iciNg
+
+{
+  "title": "React JS",
+  "description": "React JS, a popular JavaScript library that allows you to do amazing things most quickly and efficiently."
+}

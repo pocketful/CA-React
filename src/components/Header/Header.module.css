@@ -1,0 +1,27 @@
+.header {
+  background-color: #7b8080da;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5em;
+}
+
+.img {
+  max-height: 30px;
+  margin: 0.5em;
+}
+
+.nav {
+  display: flex;
+}
+.nav > a {
+  padding: 0.5em;
+}
+.nav > a:hover {
+  color: #e4d7d0;
+}
+.nav > a:active,
+.nav > a.active {
+  color: #fbceb5;
+}

@@ -1,0 +1,24 @@
+input.inputErr,
+textarea.inputErr {
+  /* background-color: #8b444470; */
+  border: 2px solid #843c3c;
+}
+
+input.inputSucc,
+textarea.inputSucc {
+  border: 2px solid #2d714b90;
+}
+
+.inputFeedbackMsg {
+  padding-left: 20px;
+}
+
+.inputErrMsg {
+  composes: inputFeedbackMsg;
+  color: #770707;
+}
+
+.inputSuccMsg {
+  composes: inputFeedbackMsg;
+  color: #05563a;
+}

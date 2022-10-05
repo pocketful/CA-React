@@ -1,0 +1,19 @@
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.title {
+  font-size: 1.25rem;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
